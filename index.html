@@ -1,82 +1,123 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>For Brindhaa 💖</title>
+<title>Brindhaa 💖 Surprise</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 body{
   margin:0;
-  background:black;
+  background:linear-gradient(to bottom,#000000,#1a001a);
   color:white;
   text-align:center;
   font-family: 'Segoe UI', sans-serif;
   overflow:hidden;
 }
-.container{
+.screen{
   position:absolute;
   top:50%;
   left:50%;
   transform:translate(-50%,-50%);
+  width:90%;
 }
 h1{
-  font-size:32px;
   color:#ff69b4;
   animation: glow 2s infinite alternate;
 }
-h2{
-  font-weight:normal;
-  margin-top:10px;
+p{
+  font-size:18px;
+}
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff1493;
+  color:white;
+  font-size:16px;
+  margin-top:20px;
+  cursor:pointer;
 }
 img{
   width:260px;
   border-radius:20px;
   margin-top:20px;
   box-shadow:0 0 30px pink;
-  animation: fade 3s ease-in-out;
-}
-button{
-  margin-top:25px;
-  padding:12px 28px;
-  border:none;
-  border-radius:30px;
-  background:#ff1493;
-  color:white;
-  font-size:16px;
-  cursor:pointer;
 }
 @keyframes glow{
   from{ text-shadow:0 0 10px pink;}
   to{ text-shadow:0 0 25px hotpink;}
 }
-@keyframes fade{
-  from{opacity:0;}
-  to{opacity:1;}
+.confetti{
+  position:absolute;
+  width:8px;
+  height:8px;
+  background:yellow;
+  top:-10px;
+  animation: fall 3s linear infinite;
+}
+@keyframes fall{
+  to{ transform:translateY(100vh) rotate(360deg);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>Advance Happy Birthday Brindhaa 💖</h1>
-<h2>19 Years of Beautiful Memories ✨</h2>
+<div class="screen" id="step1">
+<h1>Hey Brindhaa 💖</h1>
+<p>I have something special for you...</p>
+<button onclick="nextStep(2)">Click Me ✨</button>
+</div>
 
-<img src="photo.jpg">
+<div class="screen" id="step2" style="display:none;">
+<h1>Guess What? 🎂</h1>
+<p>Someone is turning 19 very soon 😌</p>
+<button onclick="nextStep(3)">Next 💕</button>
+</div>
 
-<br>
-<button onclick="startSurprise()">Tap for Surprise 🎵</button>
+<div class="screen" id="step3" style="display:none;">
+<h1>Advance Happy Birthday 💖</h1>
+<p>19 Years of Beauty, Smile & Magic ✨</p>
+<button onclick="finalStep()">Open Your Surprise 🎉</button>
+</div>
+
+<div class="screen" id="final" style="display:none;">
+<h1>Brindhaa 💖</h1>
+<p>You are truly special ✨</p>
+<img src="IMG_20240925_113047_154.jpg">
+</div>
 
 <div id="player" style="display:none;">
 <iframe id="yt" width="0" height="0" frameborder="0" allow="autoplay"></iframe>
 </div>
 
-</div>
-
 <script>
-function startSurprise(){
-document.getElementById("player").style.display="block";
-document.getElementById("yt").src=
-"https://www.youtube.com/embed/YOUTUBE_VIDEO_ID?autoplay=1";
+function nextStep(n){
+  document.getElementById("step1").style.display="none";
+  document.getElementById("step2").style.display="none";
+  document.getElementById("step3").style.display="none";
+  document.getElementById("step"+n).style.display="block";
+}
+
+function finalStep(){
+  document.getElementById("step3").style.display="none";
+  document.getElementById("final").style.display="block";
+
+  // Play music
+  document.getElementById("player").style.display="block";
+  document.getElementById("yt").src =
+  "https://www.youtube.com/embed/YeNAJUiwECc?autoplay=1";
+
+  // Confetti
+  for(let i=0;i<50;i++){
+    let conf=document.createElement("div");
+    conf.className="confetti";
+    conf.style.left=Math.random()*100+"vw";
+    conf.style.backgroundColor=
+      "hsl("+Math.random()*360+",100%,50%)";
+    conf.style.animationDuration=
+      (Math.random()*3+2)+"s";
+    document.body.appendChild(conf);
+  }
 }
 </script>
 
