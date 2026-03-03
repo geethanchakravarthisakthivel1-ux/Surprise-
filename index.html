@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Brindhaa 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;
+  background:black;
+  color:white;
+  text-align:center;
+  font-family: 'Segoe UI', sans-serif;
+  overflow:hidden;
+}
+.container{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+}
+h1{
+  font-size:32px;
+  color:#ff69b4;
+  animation: glow 2s infinite alternate;
+}
+h2{
+  font-weight:normal;
+  margin-top:10px;
+}
+img{
+  width:260px;
+  border-radius:20px;
+  margin-top:20px;
+  box-shadow:0 0 30px pink;
+  animation: fade 3s ease-in-out;
+}
+button{
+  margin-top:25px;
+  padding:12px 28px;
+  border:none;
+  border-radius:30px;
+  background:#ff1493;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+}
+@keyframes glow{
+  from{ text-shadow:0 0 10px pink;}
+  to{ text-shadow:0 0 25px hotpink;}
+}
+@keyframes fade{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Advance Happy Birthday Brindhaa 💖</h1>
+<h2>19 Years of Beautiful Memories ✨</h2>
+
+<img src="photo.jpg">
+
+<br>
+<button onclick="startSurprise()">Tap for Surprise 🎵</button>
+
+<div id="player" style="display:none;">
+<iframe id="yt" width="0" height="0" frameborder="0" allow="autoplay"></iframe>
+</div>
+
+</div>
+
+<script>
+function startSurprise(){
+document.getElementById("player").style.display="block";
+document.getElementById("yt").src=
+"https://www.youtube.com/embed/YOUTUBE_VIDEO_ID?autoplay=1";
+}
+</script>
+
+</body>
+</html>
